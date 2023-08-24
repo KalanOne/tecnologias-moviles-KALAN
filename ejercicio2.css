@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #e0e8fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    background-color: #fff;
+    width: 30%;
+    height: 500px;
+    border-radius: 25px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card .top{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    background-image: url("./Esther.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card .top::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(57, 42, 225, 0.185);
+    /* border-radius: 25px 25px 0 0; */
+}
+
+.card .bottom{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+}
+
+.card .bottom .title{
+    font-size: 1.5rem;
+    /* font-weight: 600;
+    color: #3939e1; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #474747;
+    text-align: center;
+}
+
+.card .bottom .description{
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #949494;
+    text-align: center;
+}
+
+.card .bottom .plan{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f2f4ff;
+    padding: 10px 5px;
+    border-radius: 15px;
+}
+
+.card .bottom .plan .iconMusic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #777c9c;
+}
+
+.card .bottom .plan .price{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 40%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card .bottom .plan .price .name{
+    font-weight: bold;
+}
+
+.card .bottom .plan .price .ammount{
+    font-weight: lighter;
+}
+
+.card .bottom .plan .action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .bottom .plan .action a{
+    font-family: 'Montserrat', sans-serif;
+    color: #6d65ff;
+}
+
+.card .bottom .plan .action a:visited{
+    font-family: 'Montserrat', sans-serif;
+    color: #6d65ff;
+}
+
+.card .bottom .footer{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card .bottom .footer .payment{
+    width: 80%;
+    background-color: #3929e2;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card .bottom .footer .cancel{
+    width: 80%;
+    border: none;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+    color: #949494;
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 60%;
+    }
+    .card .bottom .plan {
+        width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    .card {
+        width: 90%;
+    }
+    .card .bottom .plan {
+        width: 100%;
+    }
+}
