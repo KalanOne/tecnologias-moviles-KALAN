@@ -21,9 +21,9 @@ export default LoginBody;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     // backgroundColor: 'red',
-    width: Dimensions.get('window').width,
+    width: '100%',
     height: '75%',
     alignItems: 'center',
     justifyContent: 'center',

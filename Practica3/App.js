@@ -29,12 +29,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  input: {
-    height: 40,
-    width: '40%',
-    borderColor: 'gray',
-    borderWidth: 0.5,
-    padding: 10,
   }
 });
