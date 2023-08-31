@@ -1,27 +1,20 @@
 import React from 'react'
-import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import CustomIconButton from '../Common/CustomIconButton'
 
 const SecondLogin = () => {
 
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button}>
-                <Image
-                    source={{
-                        uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-                    }}
-                    style={styles.logo} />
-                <Text style={styles.buttonText}>Google</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-                <Image
-                    source={{
-                        uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-                    }}
-                    style={styles.logo} />
-                <Text style={styles.buttonText}>Facebook</Text>
-            </TouchableOpacity>
+            <CustomIconButton
+                image={require('../../../assets/google.webp')}
+                text={'Google'}
+            />
+            <CustomIconButton
+                image={require('../../../assets/facebook.webp')}
+                text={'Facebook'}
+            />
         </View>
     )
 }
@@ -39,25 +32,25 @@ const styles = StyleSheet.create({
         // gap: 20,
         overflow: 'hidden',
     },
-    button: {
-        // width: '40%',
-        borderRadius: 12,
-        // backgroundColor: '#c0e863',
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        borderWidth: 0.5,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: '#000',
-        fontSize: 16,
-        textAlign: 'center',
-        fontWeight: '900',
-    },
-    logo: {
-        width: 20,
-        height: 20,
-        marginRight: 10,
-    },
+    // button: {
+    //     // width: '40%',
+    //     borderRadius: 12,
+    //     // backgroundColor: '#c0e863',
+    //     paddingVertical: 12,
+    //     paddingHorizontal: 20,
+    //     borderWidth: 0.5,
+    //     flexDirection: 'row',
+    //     alignItems: 'center',
+    // },
+    // buttonText: {
+    //     color: '#000',
+    //     fontSize: 16,
+    //     textAlign: 'center',
+    //     fontWeight: '900',
+    // },
+    // logo: {
+    //     width: 20,
+    //     height: 20,
+    //     marginRight: 10,
+    // },
 })
