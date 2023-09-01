@@ -7,17 +7,6 @@ export default function App() {
   const DATA = [
     {
       id: "1",
-      name: "Sarah Catherine",
-      lastName: "Hook",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMGI4MTMxOGYtMDEzNy00NjU3LWEyMjUtNzY0MTU0MDk5OTAxXkEyXkFqcGdeQXVyODgyOTMyMDM@._V1_.jpg",
-      movies: [
-        "La primera muerte (2022)",
-        "El conjuro 3: el diablo me obligó a hacerlo (2021)",
-      ],
-    },
-    {
-      id: "2",
       name: "Isabelle",
       lastName: "Furhman",
       image:
@@ -26,6 +15,17 @@ export default function App() {
         "La huérfana (2009)",
         "La Huérfana: el origen (2022)",
         "Después de la Tierra (2013)",
+      ],
+    },
+    {
+      id: "2",
+      name: "Sarah Catherine",
+      lastName: "Hook",
+      image:
+        "https://m.media-amazon.com/images/M/MV5BMGI4MTMxOGYtMDEzNy00NjU3LWEyMjUtNzY0MTU0MDk5OTAxXkEyXkFqcGdeQXVyODgyOTMyMDM@._V1_.jpg",
+      movies: [
+        "La primera muerte (2022)",
+        "El conjuro 3: el diablo me obligó a hacerlo (2021)",
       ],
     },
     {
