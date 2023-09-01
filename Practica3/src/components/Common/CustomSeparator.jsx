@@ -13,11 +13,13 @@ const CustomSeparator = ({ text }) => {
 
 const styles = StyleSheet.create({
   container: {
+    alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     // marginBottom: 20,
-    width: '80%',
+    // width: '80%',
+    width: '100%',
   },
   line: {
     flex: 1,
