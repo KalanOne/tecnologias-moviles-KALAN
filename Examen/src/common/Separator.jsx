@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Separator({ text }) {
+export default function Separator({ text, color }) {
   return (
     <View style={styles.container}>
       <View style={styles.line} />
@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
-    height: 0.3,
+    height: 1,
     // height: 1,
-    backgroundColor: "lightgray",
+    // backgroundColor: "#001052",
+    backgroundColor: "transparent",
   },
   text: {
     paddingHorizontal: 10,

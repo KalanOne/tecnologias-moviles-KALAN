@@ -72,6 +72,51 @@ export default function App() {
       image:
         "https://images.fanpop.com/images/image_uploads/The-Quiet-camilla-belle-681121_592_336.jpg",
     },
+    {
+      id: 8,
+      name: "Instagram",
+      type: "Entertainment",
+      ammount: "2,000.00",
+      sign: "+",
+      image:
+        "https://vanlifewanderer.com/wp-content/uploads/2023/06/mackenzie_foy_interstellar.jpg",
+    },
+    {
+      id: 9,
+      name: "Twitter",
+      type: "Entertainment",
+      ammount: "1,500.00",
+      sign: "-",
+      image:
+        "https://br.web.img3.acsta.net/c_310_420/pictures/19/12/16/19/44/3151767.jpg",
+    },
+    {
+      id: 10,
+      name: "Tesla",
+      type: "Technology",
+      ammount: "5,000.00",
+      sign: "+",
+      image:
+        "https://es.web.img3.acsta.net/r_1920_1080/medias/nmedia/18/71/74/63/19147588.jpg",
+    },
+    {
+      id: 11,
+      name: "Microsoft",
+      type: "Technology",
+      ammount: "2,000.00",
+      sign: "-",
+      image:
+        "https://images.fanpop.com/images/image_uploads/The-Quiet-camilla-belle-681121_592_336.jpg",
+    },
+    {
+      id: 12,
+      name: "Disney",
+      type: "Entertainment",
+      ammount: "1,000.00",
+      sign: "-",
+      image:
+        "https://vanlifewanderer.com/wp-content/uploads/2023/06/mackenzie_foy_interstellar.jpg",
+    },
   ];
   return (
     <View style={styles.container}>
