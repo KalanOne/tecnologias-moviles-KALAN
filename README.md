@@ -2,6 +2,11 @@
 
 Este README proporciona información esencial sobre el proyecto de tareas relacionadas con Tecnologías Móviles. Aquí encontrarás detalles sobre las tecnologías utilizadas, los requisitos del proyecto, cómo instalar y usar el software, así la licencia.
 
+### Autores
+
+Alan Garcia Diaz 19121027
+Pedro Uziel Barrita licea 19121002
+
 ### Descripción del Proyecto
 
 Este proyecto se centra en la realización de tareas relacionadas con Tecnologías Móviles. Explora el uso de lenguajes como JavaScript y TypeScript para desarrollar aplicaciones móviles utilizando React Native y React. A través de este proyecto, podrás adentrarte en el emocionante mundo del desarrollo móvil y experimentar con tecnologías de vanguardia.
@@ -30,10 +35,6 @@ Sigue estos pasos para instalar el proyecto:
 2. Abre una terminal y navega hasta el directorio del proyecto.
 3. Ejecuta el comando `npm install` para instalar las dependencias.
 4. ¡Listo! El proyecto está configurado con las tecnologías necesarias.
-
-### Autor
-
-Proyecto creado por: Alan Garcia Diaz
 
 ### Licencia
 
