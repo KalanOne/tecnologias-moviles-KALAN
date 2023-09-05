@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   FlatList,
+  Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -224,18 +225,33 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "center",
+    marginBottom: Platform.select({
+      ios: 0,
+      android: 0,
+      web: -1,
+    }),
   },
   buttonActive: {
     width: "50%",
     borderTopEndRadius: 50,
   },
   buttonInactive: {
-    backgroundColor: "#d76741",
+    // backgroundColor: "#d76741",
+    backgroundColor: Platform.select({
+      ios: "#d76741",
+      android: "#d76741",
+      web: "#2596be",
+    }),
     width: "52%",
     borderBottomStartRadius: 25,
     borderTopStartRadius: 0,
     // position: "absolute",
-    marginLeft: -23,
+    // marginLeft: -23,
+    marginLeft: Platform.select({
+      ios: -23,
+      android: -23,
+      web: -41,
+    }),
   },
   buttonMutedText: {
     // fontWeight: "300",

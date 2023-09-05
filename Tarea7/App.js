@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Screen1 from "./src/screens/Screen1";
 import Screen2 from "./src/screens/Screen2";
-import { AppRegistry } from "react-native";
+import { AppRegistry, Platform } from "react-native";
 import { name as appName } from "./app.json";
 import Toast from "react-native-toast-message";
 
@@ -18,14 +18,28 @@ export default function Main() {
     setScreen(1);
   };
 
+  console.log(Platform);
+
+  const CustomScreen = Platform.select({
+    web: Screen1,
+    default: Screen2,
+  });
+
+  // return (
+  //   <>
+  //     {Platform.OS === "web" ? (
+  //       <Screen1 onWalletClick={handleWalletClick} />
+  //     ) : (
+  //       <Screen2 onBackClick={handleBackClick} />
+  //     )}
+  //     <Toast ref={(ref) => Toast.setRef(React.forwardRef())} />
+  //   </>
+  // );
+
   return (
     <>
-      {screen === 1 ? (
-        <Screen1 onWalletClick={handleWalletClick} />
-      ) : (
-        <Screen2 onBackClick={handleBackClick} />
-      )}
-      <Toast ref={(ref) => Toast.setRef(React.forwardRef())} />
+      <CustomScreen onWalletClick={handleWalletClick} />
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </>
   );
 }

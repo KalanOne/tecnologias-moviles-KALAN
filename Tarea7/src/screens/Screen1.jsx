@@ -1,5 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, StatusBar as ReactStatus } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar as ReactStatus,
+  Platform,
+} from "react-native";
 import Welcome from "../components/Screen1/Welcome";
 import Money from "../components/Screen1/Money";
 import Actions from "../components/Screen1/Actions";
@@ -24,7 +30,12 @@ export default Screen1;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#d76741",
+    // backgroundColor: "#d76741",
+    backgroundColor: Platform.select({
+      ios: "#d76741",
+      android: "#d76741",
+      web: "#2596be",
+    }),
     paddingTop: ReactStatus.currentHeight,
   },
 });
