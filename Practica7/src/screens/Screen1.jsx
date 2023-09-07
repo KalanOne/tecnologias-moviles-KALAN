@@ -2,7 +2,7 @@ import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import Card from "../components/sreen1/Card";
+import Card from "../components/screen1/Card";
 
 const Screen1 = () => {
   return (
@@ -26,13 +26,62 @@ const Screen1 = () => {
         </View>
         <Text style={styles.cardText}>Start training</Text>
       </View> */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ marginBottom: 40 }}
+      >
+        <Card
+          isDarkBlue
+          texto={"Start training"}
+          iconName={"hdd"}
+          iconTypy={"AntDesign"}
+        />
+        <Card
+          texto={"Start training"}
+          iconName={"hdd"}
+          iconTypy={"AntDesign"}
+        />
+        <Card
+          isDarkBlue
+          texto={"Start training"}
+          iconName={"hdd"}
+          iconTypy={"AntDesign"}
+        />
+        <Card
+          texto={"Start training"}
+          iconName={"hdd"}
+          iconTypy={"AntDesign"}
+        />
+        <Card
+          isDarkBlue
+          texto={"Start training"}
+          iconName={"hdd"}
+          iconTypy={"AntDesign"}
+        />
+      </ScrollView>
+      <Text style={styles.textHeader}>What are your symptomps</Text>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ marginTop: 20 }}
+      >
+        <View style={styles.symptompsContainer}>
+          <Text style={{ fontSize: 18, color: "#485258", fontWeight: "600" }}>
+            {`Today, ${new Date().toLocaleDateString()}`}
+          </Text>
+        </View>
+        <View style={styles.symptompsContainer}>
+          <Text style={{ fontSize: 18, color: "#485258", fontWeight: "600" }}>
+            I am fine
+          </Text>
+        </View>
+        <View style={styles.symptompsContainer}>
+          <Text style={{ fontSize: 18, color: "#485258", fontWeight: "600" }}>
+            I am fine
+          </Text>
+        </View>
       </ScrollView>
     </View>
   );
@@ -84,5 +133,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#236cff",
+  },
+  textHeader: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#495258",
+  },
+  symptompsContainer: {
+    height: 50,
+    width: 200,
+    borderRadius: 40,
+    backgroundColor: "#e6ecff",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 10,
   },
 });
