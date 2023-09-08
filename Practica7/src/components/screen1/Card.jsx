@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
 const Card = ({ isDarkBlue, texto, iconName, iconTypy }) => {
-  // const color = isDarkBlue ? "#2362df" : "#e6ecff";
+  // const color = isDarkBlue ? "#2663df" : "#e6ecff";
 
   const IconColor = isDarkBlue ? "#537acd" : "#fff";
 
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#3764c2",
   },
   cardIconContainer: {
-    backgroundColor: "#2362df",
+    backgroundColor: "#2663df",
     width: 50,
     height: 50,
     // padding: 5,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e6ecff",
   },
   cardIconContainerLight: {
-    backgroundColor: "#2362df",
+    backgroundColor: "#2663df",
   },
   cardText: {
     fontSize: 20,
