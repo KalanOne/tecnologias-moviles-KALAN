@@ -12,22 +12,24 @@ import Welcome from "./src/screens/Welcome";
 import SignIn from "./src/screens/SignIn";
 import SignUp from "./src/screens/SignUp";
 import { useState } from "react";
+import Screen1 from "./src/screens/Screen1";
 
 export default function App() {
-  const [screen, setScreen] = useState("Welcome");
-  const handleScreen = (screen) => setScreen(screen);
+  // const [screen, setScreen] = useState("Welcome");
+  // const handleScreen = (screen) => setScreen(screen);
   return (
     <>
-      {screen === "Welcome" ? (
+      {/* {screen === "Welcome" ? (
         <Welcome handleScreen={handleScreen} />
       ) : screen === "SignIn" ? (
         <SignIn handleScreen={handleScreen} />
       ) : (
         <SignUp handleScreen={handleScreen} />
-      )}
+      )} */}
       {/* <Welcome /> */}
       {/* <SignIn /> */}
       {/* <SignUp /> */}
+      <Screen1 />
       <StatusBar style="auto" />
     </>
   );
