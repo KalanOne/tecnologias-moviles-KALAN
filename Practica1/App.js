@@ -1,19 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  View,
-  StatusBar as ReactStatus,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-  Alert,
-} from "react-native";
-import Todo from "./src/components/Todo";
+import { StyleSheet, View, Alert } from "react-native";
 import { useState } from "react";
-import CustomButton from "./src/components/CustomButton";
-import TodoInput from "./src/components/TodoInput";
 import Title from "./src/components/Title";
 import TaskList from "./src/components/TaskList";
 
@@ -21,10 +8,27 @@ export default function App() {
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
 
+  // console.log(todos);
+
+  handleShowerror = (error) => {
+    Alert.alert("Error", error, [
+      {
+        text: "Aceptar",
+        onPress: () => console.log("Aceptar Pressed"),
+        style: "ok",
+      },
+    ]);
+  };
+
   handleAddTodo = () => {
     if (inputValue === "") {
-      Alert.alert("Error", "El campo no puede estar vacio");
-      return;
+      return handleShowerror("El campo no puede estar vacio");
+    }
+    const existe = todos.some(
+      (todo) => todo.name.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
+    );
+    if (existe) {
+      return handleShowerror("El campo ya existe");
     }
     const now = new Date();
     const createdDate = now.toISOString();
@@ -42,11 +46,28 @@ export default function App() {
     setInputValue("");
   };
 
+  handleDeleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
+  handleDoneTodo = (id) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.done = !todo.done;
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   return (
     <View style={styles.container}>
       <Title numberTask={todos.length} />
       <TaskList
         handleAddTodo={handleAddTodo}
+        handleDeleteTodo={handleDeleteTodo}
+        handleDoneTodo={handleDoneTodo}
         inputValue={inputValue}
         setInputValue={setInputValue}
         todoList={todos}
@@ -65,8 +86,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get("screen").width,
-    height: Dimensions.get("screen").height,
+    // width: Dimensions.get("screen").width,
+    // height: Dimensions.get("screen").height,
+    flex: 1,
     // backgroundColor: "#98bcff",
     // backgroundColor: "#2d7bdc",
     backgroundColor: "#5687ff",

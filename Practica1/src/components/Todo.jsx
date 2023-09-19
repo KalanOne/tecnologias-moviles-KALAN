@@ -4,7 +4,14 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CheckBox from "./CheckBox";
 
-const Todo = ({ name, createdDate }) => {
+const Todo = ({
+  id,
+  name,
+  done,
+  createdDate,
+  handleDeleteTodo,
+  handleDoneTodo,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = (value) => {
@@ -43,13 +50,13 @@ const Todo = ({ name, createdDate }) => {
         {formatCreatedDate(createdDate)}
       </View>
       <View style={styles.buttoncontainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleDeleteTodo(id)}>
           <MaterialCommunityIcons name="delete" size={25} color="lightgray" />
         </TouchableOpacity>
         <TouchableOpacity>
           <FontAwesome name="edit" size={25} color="lightgray" />
         </TouchableOpacity>
-        <CheckBox isChecked={isChecked} onToggle={toggleCheckbox} />
+        <CheckBox isChecked={done} onToggle={() => handleDoneTodo(id)} />
       </View>
     </View>
   );

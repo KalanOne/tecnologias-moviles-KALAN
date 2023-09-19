@@ -7,7 +7,7 @@ const CheckBox = ({ isChecked, onToggle }) => {
   };
 
   return (
-    <TouchableOpacity onPress={toggleCheckbox}>
+    <TouchableOpacity onPress={onToggle}>
       <View
         style={[styles.checkbox, isChecked ? styles.checked : styles.unchecked]}
       ></View>

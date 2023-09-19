@@ -11,7 +11,7 @@ const Title = ({ numberTask }) => {
       </View>
       <View>
         <Text style={styles.title}>Todo</Text>
-        <Text style={styles.subtitle}>{numberTask} Task</Text>
+        <Text style={styles.subtitle}>{numberTask} Tasks</Text>
       </View>
       {/* <CustomDate /> */}
     </View>

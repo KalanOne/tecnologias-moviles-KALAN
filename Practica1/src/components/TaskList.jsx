@@ -4,7 +4,14 @@ import TodoInput from "./TodoInput";
 import CustomButton from "./CustomButton";
 import Todo from "./Todo";
 
-function TaskList({ inputValue, setInputValue, handleAddTodo, todoList }) {
+function TaskList({
+  inputValue,
+  setInputValue,
+  handleAddTodo,
+  todoList,
+  handleDeleteTodo,
+  handleDoneTodo,
+}) {
   return (
     <View style={styles.container}>
       <View style={styles.container2}>
@@ -14,8 +21,17 @@ function TaskList({ inputValue, setInputValue, handleAddTodo, todoList }) {
       <FlatList
         data={todoList}
         keyExtractor={(item) => item.id}
-        renderItem={({ item: { name, done, createdDate } }) => {
-          return <Todo name={name} createdDate={createdDate} />;
+        renderItem={({ item: { id, name, done, createdDate } }) => {
+          return (
+            <Todo
+              id={id}
+              name={name}
+              done={done}
+              createdDate={createdDate}
+              handleDeleteTodo={handleDeleteTodo}
+              handleDoneTodo={handleDoneTodo}
+            />
+          );
         }}
         style={{ marginTop: 20, flex: 1 }}
       />
