@@ -1,14 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import CustomButton from "./CustomButton";
+import { FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import CheckBox from "./CheckBox";
 
-const Todo = ({ name }) => {
+const Todo = ({ name, createdDate }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = (value) => {
+    setIsChecked(value);
+  };
+
+  const formatCreatedDate = (createdDate) => {
+    const now = new Date();
+    const taskDate = new Date(createdDate);
+    const diffInDays = Math.floor(
+      (now - taskDate) / (1000 * 60 * 60 * 24) // Diferencia en días
+    );
+
+    let dateText = "";
+
+    if (diffInDays === 0) {
+      dateText = `Today, ${taskDate.toLocaleTimeString()}`;
+    } else if (diffInDays === 1) {
+      dateText = `Yesterday, ${taskDate.toLocaleTimeString()}`;
+    } else {
+      dateText = `${taskDate.toLocaleDateString()}, ${taskDate.toLocaleTimeString()}`;
+    }
+
+    // Si ha pasado más de 5 días, cambia el color a "corallight"
+    if (diffInDays > 5) {
+      return <Text style={styles.corallight}>{dateText}</Text>;
+    } else {
+      return <Text style={styles.date}>{dateText}</Text>;
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>{name}</Text>
-      <View style={{ flexDirection: "row", gap: 10 }}>
-        <CustomButton text={"Delete"} light={false} />
-        <CustomButton text={"Edit"} light={false} />
+      <View>
+        <Text style={styles.name}>{name}</Text>
+        {formatCreatedDate(createdDate)}
+      </View>
+      <View style={styles.buttoncontainer}>
+        <TouchableOpacity>
+          <MaterialCommunityIcons name="delete" size={25} color="lightgray" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome name="edit" size={25} color="lightgray" />
+        </TouchableOpacity>
+        <CheckBox isChecked={isChecked} onToggle={toggleCheckbox} />
       </View>
     </View>
   );
@@ -16,23 +57,31 @@ const Todo = ({ name }) => {
 
 export default Todo;
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginTop: 30,
     justifyContent: "space-between",
-    // borderwidth: 1,
     padding: 10,
     borderRadius: 5,
-    // backgroundColor: "#2d7bdc",
-    backgroundColor: "#85b0ff",
+    alignItems: "center",
+    minHeight: 80,
   },
   name: {
     fontSize: 20,
-    fontWeight: "bold",
+    letterSpacing: 1.3,
   },
-  container2: {
+  corallight: {
+    fontSize: 12,
+    color: "coral", // Cambia el color a "corallight"
+  },
+  date: {
+    fontSize: 12,
+    color: "gray",
+  },
+  buttoncontainer: {
     flexDirection: "row",
     gap: 10,
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
