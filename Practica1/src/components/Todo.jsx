@@ -9,15 +9,11 @@ const Todo = ({
   name,
   done,
   createdDate,
+  updatedDate,
   handleDeleteTodo,
   handleDoneTodo,
+  handleEditTodo,
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const toggleCheckbox = (value) => {
-    setIsChecked(value);
-  };
-
   const formatCreatedDate = (createdDate) => {
     const now = new Date();
     const taskDate = new Date(createdDate);
@@ -37,26 +33,53 @@ const Todo = ({
 
     // Si ha pasado más de 5 días, cambia el color a "corallight"
     if (diffInDays > 5) {
-      return <Text style={styles.corallight}>{dateText}</Text>;
+      return <Text style={styles.corallight}>Created at: {dateText}</Text>;
     } else {
-      return <Text style={styles.date}>{dateText}</Text>;
+      return <Text style={styles.date}>Created at: {dateText}</Text>;
     }
+  };
+
+  const formatUpdatedDate = (updatedDate) => {
+    const now = new Date();
+    const taskDate = new Date(updatedDate);
+    const diffInDays = Math.floor(
+      (now - taskDate) / (1000 * 60 * 60 * 24) // Diferencia en días
+    );
+
+    let dateText = "";
+
+    if (diffInDays === 0) {
+      dateText = `Today, ${taskDate.toLocaleTimeString()}`;
+    } else if (diffInDays === 1) {
+      dateText = `Yesterday, ${taskDate.toLocaleTimeString()}`;
+    } else {
+      dateText = `${taskDate.toLocaleDateString()}, ${taskDate.toLocaleTimeString()}`;
+    }
+
+    return dateText;
   };
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.container3}>
         <Text style={styles.name}>{name}</Text>
         {formatCreatedDate(createdDate)}
       </View>
-      <View style={styles.buttoncontainer}>
-        <TouchableOpacity onPress={() => handleDeleteTodo(id)}>
-          <MaterialCommunityIcons name="delete" size={25} color="lightgray" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesome name="edit" size={25} color="lightgray" />
-        </TouchableOpacity>
-        <CheckBox isChecked={done} onToggle={() => handleDoneTodo(id)} />
+      <View style={styles.container2}>
+        <View style={styles.buttoncontainer}>
+          <TouchableOpacity onPress={() => handleDeleteTodo(id)}>
+            <MaterialCommunityIcons name="delete" size={25} color="lightgray" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleEditTodo(id)}>
+            <FontAwesome name="edit" size={25} color="lightgray" />
+          </TouchableOpacity>
+          <CheckBox isChecked={done} onToggle={() => handleDoneTodo(id)} />
+        </View>
+        {updatedDate && (
+          <Text style={styles.date}>
+            Updated at: {formatUpdatedDate(updatedDate)}
+          </Text>
+        )}
       </View>
     </View>
   );
@@ -90,5 +113,14 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "space-between",
     alignItems: "center",
+    width: 100,
+  },
+  container2: {
+    alignItems: "flex-end",
+    width: "50%",
+  },
+  container3: {
+    alignItems: "flex-start",
+    width: "50%",
   },
 });

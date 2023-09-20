@@ -41,6 +41,7 @@ export default function App() {
         // createdDate: "2023-09-18T01:53:28.513Z",
         // createdDate: "2021-09-18T01:53:28.513Z",
         createdDate: createdDate,
+        updatedDate: null,
       },
     ]);
     setInputValue("");
@@ -61,6 +62,17 @@ export default function App() {
     setTodos(newTodos);
   };
 
+  const handleUpdateTodo = (id) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.name = inputValue;
+        todo.updatedDate = new Date().toISOString();
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   return (
     <View style={styles.container}>
       <Title numberTask={todos.length} />
@@ -68,6 +80,7 @@ export default function App() {
         handleAddTodo={handleAddTodo}
         handleDeleteTodo={handleDeleteTodo}
         handleDoneTodo={handleDoneTodo}
+        handleUpdateTodo={handleUpdateTodo}
         inputValue={inputValue}
         setInputValue={setInputValue}
         todoList={todos}
@@ -79,7 +92,7 @@ export default function App() {
           <CustomButton text={"Add"} onPress={handleAddTodo} light={true} />
         </View>
       </View> */}
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </View>
   );
 }
