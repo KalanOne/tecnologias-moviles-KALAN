@@ -30,6 +30,12 @@ function TaskList({
     setInputValue("");
   };
 
+  const handleUpdateTodoCancel = () => {
+    setEditTodo(false);
+    setIdEditTodo(null);
+    setInputValue("");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.container2}>
@@ -37,11 +43,18 @@ function TaskList({
         {editTodo == false ? (
           <CustomButton text={"Add"} onPress={handleAddTodo} light={false} />
         ) : (
-          <CustomButton
-            text={"Edit"}
-            onPress={handleUpdateTodoLocal}
-            light={false}
-          />
+          <>
+            <CustomButton
+              text={"Edit"}
+              onPress={handleUpdateTodoLocal}
+              light={false}
+            />
+            <CustomButton
+              text={"Cancel"}
+              onPress={handleUpdateTodoCancel}
+              light={false}
+            />
+          </>
         )}
       </View>
       <FlatList
@@ -84,6 +97,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: 15,
+    gap: 10,
   },
 });

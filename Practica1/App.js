@@ -3,75 +3,86 @@ import { StyleSheet, View, Alert } from "react-native";
 import { useState } from "react";
 import Title from "./src/components/Title";
 import TaskList from "./src/components/TaskList";
+import { useTodos } from "./src/hooks/useTodos";
 
 export default function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [todos, setTodos] = useState([]);
+  const {
+    inputValue,
+    setInputValue,
+    todos,
+    handleAddTodo,
+    handleDeleteTodo,
+    handleDoneTodo,
+    handleUpdateTodo,
+  } = useTodos();
 
-  // console.log(todos);
+  // const [inputValue, setInputValue] = useState("");
+  // const [todos, setTodos] = useState([]);
 
-  handleShowerror = (error) => {
-    Alert.alert("Error", error, [
-      {
-        text: "Aceptar",
-        onPress: () => console.log("Aceptar Pressed"),
-        style: "ok",
-      },
-    ]);
-  };
+  // // console.log(todos);
 
-  handleAddTodo = () => {
-    if (inputValue === "") {
-      return handleShowerror("El campo no puede estar vacio");
-    }
-    const existe = todos.some(
-      (todo) => todo.name.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
-    );
-    if (existe) {
-      return handleShowerror("El campo ya existe");
-    }
-    const now = new Date();
-    const createdDate = now.toISOString();
-    setTodos([
-      ...todos,
-      {
-        id: todos.length + 1,
-        name: inputValue,
-        done: false,
-        // createdDate: "2023-09-18T01:53:28.513Z",
-        // createdDate: "2021-09-18T01:53:28.513Z",
-        createdDate: createdDate,
-        updatedDate: null,
-      },
-    ]);
-    setInputValue("");
-  };
+  // const handleShowerror = (error) => {
+  //   Alert.alert("Error", error, [
+  //     {
+  //       text: "Aceptar",
+  //       onPress: () => console.log("Aceptar Pressed"),
+  //       style: "ok",
+  //     },
+  //   ]);
+  // };
 
-  handleDeleteTodo = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
-  };
+  // const handleAddTodo = () => {
+  //   if (inputValue === "") {
+  //     return handleShowerror("El campo no puede estar vacio");
+  //   }
+  //   const existe = todos.some(
+  //     (todo) => todo.name.toLocaleLowerCase() === inputValue.toLocaleLowerCase()
+  //   );
+  //   if (existe) {
+  //     return handleShowerror("El campo ya existe");
+  //   }
+  //   const now = new Date();
+  //   const createdDate = now.toISOString();
+  //   setTodos([
+  //     ...todos,
+  //     {
+  //       id: todos.length + 1,
+  //       name: inputValue,
+  //       done: false,
+  //       // createdDate: "2023-09-18T01:53:28.513Z",
+  //       // createdDate: "2021-09-18T01:53:28.513Z",
+  //       createdDate: createdDate,
+  //       updatedDate: null,
+  //     },
+  //   ]);
+  //   setInputValue("");
+  // };
 
-  handleDoneTodo = (id) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.done = !todo.done;
-      }
-      return todo;
-    });
-    setTodos(newTodos);
-  };
+  // const handleDeleteTodo = (id) => {
+  //   const newTodos = todos.filter((todo) => todo.id !== id);
+  //   setTodos(newTodos);
+  // };
 
-  const handleUpdateTodo = (id) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.name = inputValue;
-        todo.updatedDate = new Date().toISOString();
-      }
-      return todo;
-    });
-    setTodos(newTodos);
-  };
+  // const handleDoneTodo = (id) => {
+  //   const newTodos = todos.map((todo) => {
+  //     if (todo.id === id) {
+  //       todo.done = !todo.done;
+  //     }
+  //     return todo;
+  //   });
+  //   setTodos(newTodos);
+  // };
+
+  // const handleUpdateTodo = (id) => {
+  //   const newTodos = todos.map((todo) => {
+  //     if (todo.id === id) {
+  //       todo.name = inputValue;
+  //       todo.updatedDate = new Date().toISOString();
+  //     }
+  //     return todo;
+  //   });
+  //   setTodos(newTodos);
+  // };
 
   return (
     <View style={styles.container}>

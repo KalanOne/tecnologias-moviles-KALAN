@@ -62,7 +62,9 @@ const Todo = ({
   return (
     <View style={styles.container}>
       <View style={styles.container3}>
-        <Text style={styles.name}>{name}</Text>
+        <Text style={[styles.name, done == true ? styles.completed : null]}>
+          {name}
+        </Text>
         {formatCreatedDate(createdDate)}
       </View>
       <View style={styles.container2}>
@@ -122,5 +124,9 @@ const styles = StyleSheet.create({
   container3: {
     alignItems: "flex-start",
     width: "50%",
+  },
+  completed: {
+    textDecorationLine: "line-through",
+    color: "gray",
   },
 });
