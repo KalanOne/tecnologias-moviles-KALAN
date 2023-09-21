@@ -12,6 +12,7 @@ function TaskList({
   handleDeleteTodo,
   handleDoneTodo,
   handleUpdateTodo,
+  handleInfoTodo,
 }) {
   const [editTodo, setEditTodo] = useState(false);
   const [idEditTodo, setIdEditTodo] = useState(null);
@@ -73,6 +74,7 @@ function TaskList({
               handleDeleteTodo={handleDeleteTodo}
               handleDoneTodo={handleDoneTodo}
               handleEditTodo={handleEditTodo}
+              handleInfoTodo={handleInfoTodo}
             />
           );
         }}

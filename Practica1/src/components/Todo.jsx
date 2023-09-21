@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CheckBox from "./CheckBox";
+import { AntDesign } from "@expo/vector-icons";
 
 const Todo = ({
   id,
@@ -13,6 +14,7 @@ const Todo = ({
   handleDeleteTodo,
   handleDoneTodo,
   handleEditTodo,
+  handleInfoTodo,
 }) => {
   const formatCreatedDate = (createdDate) => {
     const now = new Date();
@@ -33,9 +35,19 @@ const Todo = ({
 
     // Si ha pasado más de 5 días, cambia el color a "corallight"
     if (diffInDays > 5) {
-      return <Text style={styles.corallight}>Created at: {dateText}</Text>;
+      return (
+        <>
+          <Text style={styles.corallight}>Created at:</Text>
+          <Text style={styles.corallight}>{dateText}</Text>
+        </>
+      );
     } else {
-      return <Text style={styles.date}>Created at: {dateText}</Text>;
+      return (
+        <>
+          <Text style={styles.date}>Created at:</Text>
+          <Text style={styles.date}>{dateText}</Text>
+        </>
+      );
     }
   };
 
@@ -69,6 +81,9 @@ const Todo = ({
       </View>
       <View style={styles.container2}>
         <View style={styles.buttoncontainer}>
+          <TouchableOpacity onPress={() => handleInfoTodo(id)}>
+            <AntDesign name="eyeo" size={25} color="lightgray" />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => handleDeleteTodo(id)}>
             <MaterialCommunityIcons name="delete" size={25} color="lightgray" />
           </TouchableOpacity>
@@ -78,9 +93,10 @@ const Todo = ({
           <CheckBox isChecked={done} onToggle={() => handleDoneTodo(id)} />
         </View>
         {updatedDate && (
-          <Text style={styles.date}>
-            Updated at: {formatUpdatedDate(updatedDate)}
-          </Text>
+          <>
+            <Text style={styles.date}>Updated at:</Text>
+            <Text style={styles.date}>{formatUpdatedDate(updatedDate)}</Text>
+          </>
         )}
       </View>
     </View>
@@ -115,15 +131,15 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "space-between",
     alignItems: "center",
-    width: 100,
+    // width: 100,
   },
   container2: {
     alignItems: "flex-end",
-    width: "50%",
+    width: "40%",
   },
   container3: {
     alignItems: "flex-start",
-    width: "50%",
+    width: "60%",
   },
   completed: {
     textDecorationLine: "line-through",

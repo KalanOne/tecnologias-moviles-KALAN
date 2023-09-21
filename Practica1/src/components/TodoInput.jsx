@@ -11,7 +11,9 @@ const TodoInput = ({ value, onChangeText }) => {
   };
   return (
     <TextInput
-      style={[styles.input, isBlur && { borderColor: "#e562ff" }]}
+      // style={[styles.input, isBlur && { borderColor: "#62ffa3" }]}
+      // style={[styles.input, isBlur && { borderColor: "#cd62ff" }]}
+      style={[styles.input, isBlur && { borderColor: "#ff62b0" }]}
       value={value}
       onChangeText={onChangeText}
       onBlur={handleBlur}
