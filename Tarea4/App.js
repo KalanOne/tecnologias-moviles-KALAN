@@ -50,7 +50,7 @@ export default function App() {
         style="light"
         backgroundColor="#272b33"
         animated={true}
-        hidden={true}
+        // hidden={true}
       />
     </NavigationContainer>
   );
