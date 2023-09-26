@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const CharacterItem = ({
   id,
@@ -9,42 +9,48 @@ const CharacterItem = ({
   origin,
   location,
   image,
+  navigation,
+  route,
 }) => {
   return (
-    <View style={styles.container}>
-      <Image
-        style={{ width: 125, height: 125 }}
-        source={{
-          uri: image,
-        }}
-      />
-      <View>
-        <Text style={styles.name}>{name}</Text>
-        <View style={styles.statusContainer}>
-          <View
-            style={
-              status == "Alive"
-                ? styles.alive
-                : status == "Dead"
-                ? styles.dead
-                : styles.unknown
-            }
-          ></View>
-          <Text style={styles.statusSpecie}>
-            {status == "unknown" ? "Unknown" : status} -{" "}
-            {species == "unknown" ? "Unknown" : species}
+    <TouchableOpacity
+      onPress={() => navigation.navigate("CharacterDetail", { id })}
+    >
+      <View style={styles.container}>
+        <Image
+          style={{ width: 125, height: 125 }}
+          source={{
+            uri: image,
+          }}
+        />
+        <View>
+          <Text style={styles.name}>{name}</Text>
+          <View style={styles.statusContainer}>
+            <View
+              style={
+                status == "Alive"
+                  ? styles.alive
+                  : status == "Dead"
+                  ? styles.dead
+                  : styles.unknown
+              }
+            ></View>
+            <Text style={styles.statusSpecie}>
+              {status == "unknown" ? "Unknown" : status} -{" "}
+              {species == "unknown" ? "Unknown" : species}
+            </Text>
+          </View>
+          <Text style={styles.lastKnow}>Last known location:</Text>
+          <Text style={styles.location}>
+            {location.name == "unknown" ? "Unknown" : location.name}
+          </Text>
+          <Text style={styles.lastKnow}>First seen in:</Text>
+          <Text style={styles.location}>
+            {origin.name == "unknown" ? "Unknown" : origin.name}
           </Text>
         </View>
-        <Text style={styles.lastKnow}>Last known location:</Text>
-        <Text style={styles.location}>
-          {location.name == "unknown" ? "Unknown" : location.name}
-        </Text>
-        <Text style={styles.lastKnow}>First seen in:</Text>
-        <Text style={styles.location}>
-          {origin.name == "unknown" ? "Unknown" : origin.name}
-        </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

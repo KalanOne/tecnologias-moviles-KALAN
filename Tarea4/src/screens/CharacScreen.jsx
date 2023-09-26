@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import CharacterItem from "../components/CharacterItem";
 
-const CharacScreen = () => {
+const CharacScreen = ({ navigation, route }) => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
@@ -24,15 +31,7 @@ const CharacScreen = () => {
       <FlatList
         data={characters}
         renderItem={({
-          item: {
-            id,
-            name,
-            status,
-            species,
-            origin,
-            location,
-            image,
-          },
+          item: { id, name, status, species, origin, location, image },
         }) => (
           <CharacterItem
             id={id}
@@ -42,6 +41,8 @@ const CharacScreen = () => {
             origin={origin}
             location={location}
             image={image}
+            navigation={navigation}
+            route={route}
           />
         )}
         keyExtractor={(item) => item.id}
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "#272b33",
-    paddingTop: StatusBar.currentHeight,
+    // paddingTop: StatusBar.currentHeight,
   },
   title: {
     color: "#fff",
