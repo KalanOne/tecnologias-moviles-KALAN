@@ -156,10 +156,11 @@ const styles = StyleSheet.create({
   },
   caracteristicContainer: {
     flexDirection: "row",
-    // justifyContent: "space-between",
+    justifyContent: "flex-start",
     gap: 10,
     alignItems: "center",
     paddingBottom: 5,
+    flexWrap: "wrap",
   },
   alive: {
     width: 10,
