@@ -21,14 +21,27 @@ export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#e0aeff",
+              // height: 0,
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerShown: false,
+          }}
+        >
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
         </Stack.Navigator>
         <StatusBar
           style="auto"
           animated={true}
-          backgroundColor="#e0aeff"
+          // backgroundColor="#e0aeff"
           // hidden={true}
         />
       </SafeAreaView>
