@@ -1,13 +1,14 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import useAuth from "../hooks/useAuthContext";
+import { useNavigation } from "@react-navigation/native";
 
 const Details = () => {
   const { handleLogout: onLogout } = useAuth();
 
   const handleLogout = () => {
     onLogout();
-    navigation.navigate("Login");
+    useNavigation.navigation.navigate("Login");
   };
   return (
     <View>
