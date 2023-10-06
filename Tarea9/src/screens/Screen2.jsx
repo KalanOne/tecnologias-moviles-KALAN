@@ -57,7 +57,7 @@ const Screen2 = () => {
       ]}
     >
       <StatusBar style={theme == "light" ? "dark" : "light"} />
-      <Header />
+      <Header title={""} />
       <View style={styles.titleContainer}>
         <Text
           style={[

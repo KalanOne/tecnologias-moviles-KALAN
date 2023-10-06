@@ -11,8 +11,8 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <ThemeContextProvider>
-      <NavigationContainer>
+    <NavigationContainer>
+      <ThemeContextProvider>
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
           initialRouteName="Home"
@@ -25,8 +25,8 @@ export default function App() {
         {/* <View style={styles.container}>
         <Screen1 />
       </View> */}
-      </NavigationContainer>
-    </ThemeContextProvider>
+      </ThemeContextProvider>
+    </NavigationContainer>
   );
 }
 

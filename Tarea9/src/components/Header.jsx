@@ -12,7 +12,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { usetheme } from "../hooks/useThemeContext";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = () => {
+const Header = ({ title }) => {
   const [theme, toggleTheme] = usetheme();
   const navigation = useNavigation();
   return (
@@ -41,7 +41,7 @@ const Header = () => {
           theme == "light" ? { color: "#000" } : { color: "#fff" },
         ]}
       >
-        Send
+        {title}
       </Text>
       <TouchableOpacity
         style={[

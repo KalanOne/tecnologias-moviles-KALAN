@@ -14,7 +14,7 @@ const Screen3 = () => {
         theme == "light" ? { backgroundColor: "#E0E0E0" } : null,
       ]}
     >
-      <Header />
+      <Header title={"Send"} />
       <StatusBar style={theme == "light" ? "dark" : "light"} />
       <View style={styles.infoContainer}>
         <View style={styles.imagesContainer}>
