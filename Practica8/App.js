@@ -1,34 +1,69 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import Card from "./src/Components/Card";
-import { AppContextProvider } from "./src/context/AppContext";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import Home from "./src/screens/Home";
+import Login from "./src/screens/Login";
+import Details from "./src/screens/Details";
+import { AuthProvider } from "./src/context/AuthContext";
+import useAuth from "./src/hooks/useAuthContext";
 
-const person = {
-  id: "1",
-  name: "Alan",
-  lastName: "Garcia",
-  country: "Mexico",
-  city: "Morelia",
-  age: 22,
-  school: "ITM",
+const Stack = createStackNavigator();
+
+const layout = () => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+    );
+  } else {
+    return (
+      <>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Details" component={Details} />
+      </>
+    );
+  }
 };
 
 export default function App() {
   return (
-    <AppContextProvider>
-      <View style={styles.container}>
-        <Card person={person} />
-        <StatusBar style="auto" />
-      </View>
-    </AppContextProvider>
+    <AuthProvider>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Details" component={Details} />
+          </Stack.Navigator>
+          <StatusBar style="auto" />
+        </View>
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    paddingTop: 20,
   },
 });
