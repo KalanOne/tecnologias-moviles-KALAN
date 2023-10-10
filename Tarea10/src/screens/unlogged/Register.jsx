@@ -12,11 +12,13 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CustomInput from "../../components/CustomInput";
+import { UseAuth } from "../../hooks/UseAuth";
 
 const Register = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
+
   const handlePassword = (text) => {
     setPassword(text);
   };
@@ -28,6 +30,16 @@ const Register = () => {
   };
 
   const navigation = useNavigation();
+  const { handleRegister } = UseAuth();
+
+  const handleLocalRegister = () => {
+    const registerResponse = handleRegister(name, username, password);
+    if (registerResponse) {
+      navigation.navigate("LoggedScreens");
+    } else {
+      Alert.alert("Error", "Something went wrong");
+    }
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -77,7 +89,10 @@ const Register = () => {
             secure={true}
           />
         </View>
-        <TouchableOpacity style={styles.signUpButton}>
+        <TouchableOpacity
+          style={styles.signUpButton}
+          onPress={handleLocalRegister}
+        >
           <Text style={styles.signUpText}>Sign Up</Text>
         </TouchableOpacity>
         <View style={styles.privacyNoticesContainer}>

@@ -12,10 +12,7 @@ const Welcome = () => {
   useEffect(() => {
     if (isLogged()) {
       // Realizar la navegación o reset aquí
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "LoggedScreens" }],
-      });
+      navigation.navigate("LoggedScreens");
     }
   }, []);
   return (

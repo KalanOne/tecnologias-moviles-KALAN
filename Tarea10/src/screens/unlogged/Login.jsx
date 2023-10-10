@@ -45,7 +45,6 @@ const Login = () => {
       navigation.navigate("LoggedScreens");
     } else {
       Alert.alert("Error", "Invalid credentials");
-      //   console.log("Invalid credentials");
     }
   };
 

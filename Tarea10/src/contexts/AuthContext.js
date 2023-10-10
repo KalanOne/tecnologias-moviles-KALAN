@@ -3,18 +3,19 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    id: 1,
-    name: "Admin",
-    username: "admin",
-    password: "admin",
-  });
+  const [user, setUser] = useState(null);
   const [users, setUsers] = useState([
     {
       id: 1,
       name: "Admin",
       username: "admin",
       password: "admin",
+    },
+    {
+      id: 2,
+      name: "Alan",
+      username: "1",
+      password: "1",
     },
   ]);
 
@@ -28,7 +29,7 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const handleRegister = (username, password, name) => {
+  const handleRegister = (name, username, password) => {
     const user = users.find((user) => user.username === username);
     if (user) {
       return false;
@@ -44,6 +45,7 @@ const AuthContextProvider = ({ children }) => {
         password,
       };
       setUsers([...users, newUser]);
+      setUser(newUser);
       return true;
     }
   };
@@ -55,7 +57,37 @@ const AuthContextProvider = ({ children }) => {
 
   const isLogged = () => !!user;
 
-  const values = { user, handleLogin, handleRegister, handleLogout, isLogged };
+  const handleUpdate = (id, name, username, password) => {
+    const user = users.find((user) => user.id === id);
+    if (user) {
+      const newUsers = users.map((user) => {
+        if (user.id === id) {
+          return {
+            id,
+            name,
+            username,
+            password: password ? password : user.password,
+          };
+        } else {
+          return user;
+        }
+      });
+      setUsers(newUsers);
+      setUser(newUsers.find((user) => user.id === id));
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const values = {
+    user,
+    handleLogin,
+    handleRegister,
+    handleLogout,
+    isLogged,
+    handleUpdate,
+  };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

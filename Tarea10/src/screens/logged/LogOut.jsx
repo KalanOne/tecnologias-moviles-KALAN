@@ -11,17 +11,9 @@ const LogOut = () => {
     // y solo si user ha cambiado
     const handleLocalLogout = () => {
       handleLogout();
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "Welcome" }],
-      });
+      navigation.navigate("Welcome");
     };
-
     handleLocalLogout();
-
-    return () => {
-      // Limpia el efecto si es necesario
-    };
   }, []);
 
   return <></>;
