@@ -6,12 +6,14 @@ import useAuth from "../hooks/useAuthContext";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { handleLogin: onLogin } = useAuth();
+  const { handleLogin: onLogin, user } = useAuth();
   const navigation = useNavigation();
 
-  const handleLogin = () => {
+  console.log("User: ", user);
+
+  const handleLogin = async () => {
     try {
-      const loginValue = onLogin(username, password);
+      const loginValue = await onLogin(username, password);
       if (loginValue) {
         console.log("Login successful");
         navigation.navigate("Home");

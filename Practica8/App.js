@@ -7,55 +7,39 @@ import Login from "./src/screens/Login";
 import Details from "./src/screens/Details";
 import { AuthProvider } from "./src/context/AuthContext";
 import useAuth from "./src/hooks/useAuthContext";
+import Layout from "./src/layout/Layout";
 
-const Stack = createStackNavigator();
 
-const layout = () => {
-  const { user } = useAuth();
 
-  if (!user) {
-    return (
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
-      />
-    );
-  } else {
-    return (
-      <>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="Details" component={Details} />
-      </>
-    );
-  }
-};
+// const layout = () => {
+//   const { user } = useAuth();
+
+//   if (!user) {
+//     return (
+//       <Stack.Screen
+//         name="Login"
+//         component={Login}
+//         options={{ headerShown: false }}
+//       />
+//     );
+//   } else {
+//     return (
+//       <>
+//         <Stack.Screen
+//           name="Home"
+//           component={Home}
+//           options={{ headerShown: false }}
+//         />
+//         <Stack.Screen name="Details" component={Details} />
+//       </>
+//     );
+//   }
+// };
 
 export default function App() {
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <View style={styles.container}>
-          <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Home"
-              component={Home}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen name="Details" component={Details} />
-          </Stack.Navigator>
-          <StatusBar style="auto" />
-        </View>
-      </NavigationContainer>
+      <Layout />
     </AuthProvider>
   );
 }
