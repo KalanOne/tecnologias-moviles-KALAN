@@ -14,15 +14,15 @@ const Drawer = createDrawerNavigator();
 const LoggedScreens = () => {
   const { isLogged } = UseAuth();
   const navigation = useNavigation();
-  useEffect(() => {
-    if (!isLogged()) {
-      // Realizar la navegación o reset aquí
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "Welcome" }],
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!isLogged()) {
+  //     // Realizar la navegación o reset aquí
+  //     navigation.reset({
+  //       index: 0,
+  //       routes: [{ name: "Welcome" }],
+  //     });
+  //   }
+  // }, []);
   return (
     <Drawer.Navigator
       initialRouteName="Index"

@@ -8,26 +8,15 @@ import Welcome from "./src/screens/unlogged/Welcome";
 import Login from "./src/screens/unlogged/Login";
 import Register from "./src/screens/unlogged/Register";
 import LoggedScreens from "./src/screens/logged/LoggedScreens";
+import Layout from "./src/Layout";
 
-const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
     <AuthContextProvider>
       <View style={styles.container}>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Welcome"
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen name="Welcome" component={Welcome} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="LoggedScreens" component={LoggedScreens} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <Layout />
         <StatusBar style="auto" animated={true} />
       </View>
     </AuthContextProvider>
