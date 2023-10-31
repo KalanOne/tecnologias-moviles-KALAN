@@ -10,7 +10,11 @@ const Button = ({ text, role, onPress }) => {
       ]}
       onPress={onPress}
     >
-      <Text style={styles.text}>{text}</Text>
+      <Text
+        style={[role == "number" ? styles.numbertext : styles.operatortext]}
+      >
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -22,19 +26,25 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 15,
-    backgroundColor: "#cc00ff",
+    backgroundColor: "#e2e2e2",
+    elevation: 50,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   numberContainer: {
-    backgroundColor: "#cc00ff",
+    backgroundColor: "#e2e2e271",
+    color: "white",
   },
   operatorContainer: {
-    backgroundColor: "#ff0066",
+    backgroundColor: "#5b94ff7c",
   },
-  text: {
+  numbertext: {
     color: "white",
-    fontSize: 25,
+    fontSize: 30,
+  },
+  operatortext: {
+    color: "#1b3dff",
+    fontSize: 30,
   },
 });
