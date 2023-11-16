@@ -90,7 +90,7 @@ const Todo = ({
           <TouchableOpacity onPress={() => handleEditTodo(id)}>
             <FontAwesome name="edit" size={25} color="lightgray" />
           </TouchableOpacity>
-          <CheckBox isChecked={done} onToggle={() => handleDoneTodo(id)} />
+          <CheckBox isChecked={done} onToggle={() => handleDoneTodo()} />
         </View>
         {updatedDate && (
           <>

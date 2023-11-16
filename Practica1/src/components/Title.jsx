@@ -2,8 +2,10 @@ import React from "react";
 import { StatusBar, StyleSheet, Text, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import CustomDate from "./CustomDate";
+import { useSelector } from "react-redux";
 
-const Title = ({ numberTask }) => {
+const Title = () => {
+  const todos = useSelector((state) => state.todos.todos);
   return (
     <View style={styles.container}>
       <View style={styles.shadow}>
@@ -11,7 +13,7 @@ const Title = ({ numberTask }) => {
       </View>
       <View>
         <Text style={styles.title}>Todo</Text>
-        <Text style={styles.subtitle}>{numberTask} Tasks</Text>
+        <Text style={styles.subtitle}>{todos.length} Tasks</Text>
       </View>
       {/* <CustomDate /> */}
     </View>

@@ -10,15 +10,18 @@ import {
   StatusBar,
 } from "react-native";
 import CustomButton from "./CustomButton";
+import { useDispatch, useSelector } from "react-redux";
 
-const DetailsModal = ({ todo, handleCloseModal, modalVisible }) => {
+const DetailsModal = () => {
+  const { modalVisible, todoItem } = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
   return (
     <>
       <Modal
         animationType="fade"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={handleCloseModal}
+        onRequestClose={() => dispatch({ type: "todos/handleCloseModal" })}
         statusBarTranslucent={true}
       >
         <View style={styles.centeredView}>
@@ -29,34 +32,36 @@ const DetailsModal = ({ todo, handleCloseModal, modalVisible }) => {
             <View style={styles.infoContainer}>
               <View style={styles.infoItem}>
                 <Text style={styles.infoText}>ID</Text>
-                <Text style={styles.infoTextDetail}>{todo.id}</Text>
+                <Text style={styles.infoTextDetail}>{todoItem.id}</Text>
               </View>
               <View style={styles.infoItem}>
                 <Text style={styles.infoText}>Nombre de la tarea</Text>
-                <Text style={styles.infoTextDetail}>{todo.name}</Text>
+                <Text style={styles.infoTextDetail}>{todoItem.name}</Text>
               </View>
               <View style={styles.infoItem}>
                 <Text style={styles.infoText}>Fecha de creacion</Text>
-                <Text style={styles.infoTextDetail}>{todo.createdDate}</Text>
+                <Text style={styles.infoTextDetail}>
+                  {todoItem.createdDate}
+                </Text>
               </View>
               <View style={styles.infoItem}>
                 <Text style={styles.infoText}>Fecha de actualizacion</Text>
                 <Text style={styles.infoTextDetail}>
-                  {todo.updatedDate
-                    ? todo.updatedDate
+                  {todoItem.updatedDate
+                    ? todoItem.updatedDate
                     : "No se ha actuallizado"}
                 </Text>
               </View>
               <View style={styles.infoItem}>
                 <Text style={styles.infoText}>Estado de la tarea</Text>
                 <Text style={styles.infoTextDetail}>
-                  {todo.done ? "Completado" : "Pendiente"}
+                  {todoItem.done ? "Completado" : "Pendiente"}
                 </Text>
               </View>
             </View>
             <CustomButton
               light={true}
-              onPress={handleCloseModal}
+              onPress={() => dispatch({ type: "todos/handleCloseModal" })}
               text="Cerrar"
             />
           </View>

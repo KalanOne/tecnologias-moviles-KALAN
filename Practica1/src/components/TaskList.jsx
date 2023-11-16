@@ -3,46 +3,55 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import TodoInput from "./TodoInput";
 import CustomButton from "./CustomButton";
 import Todo from "./Todo";
+import { useDispatch, useSelector } from "react-redux";
 
-function TaskList({
-  inputValue,
-  setInputValue,
-  handleAddTodo,
-  todoList,
-  handleDeleteTodo,
-  handleDoneTodo,
-  handleUpdateTodo,
-  handleInfoTodo,
-}) {
+function TaskList() {
   const [editTodo, setEditTodo] = useState(false);
   const [idEditTodo, setIdEditTodo] = useState(null);
+  const { inputValue, todos, modalVisible, todoItem, error } = useSelector(
+    (state) => state.todos
+  );
+  const dispatch = useDispatch();
 
   const handleEditTodo = (id) => {
     setEditTodo(true);
     setIdEditTodo(id);
-    const todo = todoList.find((todo) => todo.id === id);
-    setInputValue(todo.name);
+    const todo = todos.find((todo) => todo.id === id);
+    // setInputValue(todo.name);
+    dispatch({ type: "todos/setInputValue", payload: todo.name });
   };
 
   const handleUpdateTodoLocal = () => {
-    handleUpdateTodo(idEditTodo);
+    // handleUpdateTodo(idEditTodo);
+    dispatch({ type: "todos/handleUpdateTodo", payload: idEditTodo });
     setEditTodo(false);
     setIdEditTodo(null);
-    setInputValue("");
+    // setInputValue("");
+    dispatch({ type: "todos/setInputValue", payload: "" });
   };
 
   const handleUpdateTodoCancel = () => {
     setEditTodo(false);
     setIdEditTodo(null);
-    setInputValue("");
+    // setInputValue("");
+    dispatch({ type: "todos/setInputValue", payload: "" });
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.container2}>
-        <TodoInput value={inputValue} onChangeText={setInputValue} />
+        <TodoInput
+          value={inputValue}
+          onChangeText={(value) => {
+            dispatch({ type: "todos/setInputValue", payload: value });
+          }}
+        />
         {editTodo == false ? (
-          <CustomButton text={"Add"} onPress={handleAddTodo} light={false} />
+          <CustomButton
+            text={"Add"}
+            onPress={() => dispatch({ type: "todos/handleAddTodo" })}
+            light={false}
+          />
         ) : (
           <>
             <CustomButton
@@ -59,7 +68,7 @@ function TaskList({
         )}
       </View>
       <FlatList
-        data={todoList}
+        data={todos}
         keyExtractor={(item) => item.id}
         renderItem={({
           item: { id, name, done, createdDate, updatedDate },
@@ -71,10 +80,16 @@ function TaskList({
               done={done}
               createdDate={createdDate}
               updatedDate={updatedDate}
-              handleDeleteTodo={handleDeleteTodo}
-              handleDoneTodo={handleDoneTodo}
+              handleDeleteTodo={(ids) =>
+                dispatch({ type: "todos/handleDeleteTodo", payload: ids })
+              }
+              handleDoneTodo={() =>
+                dispatch({ type: "todos/handleDoneTodo", payload: id })
+              }
               handleEditTodo={handleEditTodo}
-              handleInfoTodo={handleInfoTodo}
+              handleInfoTodo={(ids) =>
+                dispatch({ type: "todos/handleInfoTodo", payload: ids })
+              }
             />
           );
         }}

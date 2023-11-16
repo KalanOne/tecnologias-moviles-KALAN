@@ -5,25 +5,14 @@ import Title from "./src/components/Title";
 import TaskList from "./src/components/TaskList";
 import { useTodos } from "./src/hooks/useTodos";
 import DetailsModal from "./src/components/DetailsModal";
+import { Provider } from "react-redux";
+import { store } from "./src/store";
+import Screen1 from "./src/screens/Screen1";
 
 export default function App() {
-  const {
-    inputValue,
-    setInputValue,
-    todos,
-    handleAddTodo,
-    handleDeleteTodo,
-    handleDoneTodo,
-    handleUpdateTodo,
-    handleCloseModal,
-    modalVisible,
-    todoItem,
-    handleInfoTodo,
-  } = useTodos();
-
   return (
-    <>
-      <View style={styles.container}>
+    <Provider store={store}>
+      {/* <View style={styles.container}>
         <Title numberTask={todos.length} />
         <TaskList
           handleAddTodo={handleAddTodo}
@@ -41,8 +30,9 @@ export default function App() {
         todo={todoItem}
         handleCloseModal={handleCloseModal}
         modalVisible={modalVisible}
-      />
-    </>
+      /> */}
+      <Screen1 />
+    </Provider>
   );
 }
 
